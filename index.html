@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nam Do — Data, BI &amp; Actuarial Analytics</title>
-<meta name="description" content="Nam Do — Actuarial Analyst at PVI Digital. Business Intelligence, Data Engineering and Analytics: Power BI, Microsoft Fabric, PySpark, SQL.">
-<meta property="og:title" content="Nam Do — Data, BI &amp; Actuarial Analytics">
-<meta property="og:description" content="Actuarial Analyst building BI dashboards and data pipelines with Power BI, Microsoft Fabric and PySpark.">
+<title>Nam Do Portfolio</title>
+<meta name="description" content="Nam Do, Data Analyst at PVI Digital. Business Intelligence, Data Engineering and Analytics: Power BI, Microsoft Fabric, PySpark, SQL.">
+<meta property="og:title" content="Nam Do · Data, BI &amp; Analytics">
+<meta property="og:description" content="Data Analyst building BI dashboards and data pipelines with Power BI, Microsoft Fabric and PySpark.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1b2d'/%3E%3Cpath d='M18 44V20h5l11 15V20h5v24h-5L23 29v15z' fill='%230bb4c9'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -134,9 +134,17 @@
     display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
 
   /* reveal animation */
-  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal{opacity:0;transform:translateY(18px);
+    transition:opacity .85s cubic-bezier(.22,1,.36,1),transform .85s cubic-bezier(.22,1,.36,1);
+    will-change:opacity,transform;}
   .reveal.in{opacity:1;transform:none;}
-  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;}}
+  /* hero entrance, gently staggered */
+  .hero .eyebrow,.hero h1,.hero .lead,.hero .cta,.hero-meta{opacity:0;animation:heroIn .9s cubic-bezier(.22,1,.36,1) forwards;}
+  .hero h1{animation-delay:.08s;} .hero .lead{animation-delay:.16s;}
+  .hero .cta{animation-delay:.24s;} .hero-meta{animation-delay:.32s;}
+  @keyframes heroIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+  @media(prefers-reduced-motion:reduce){
+    .reveal,.hero .eyebrow,.hero h1,.hero .lead,.hero .cta,.hero-meta{opacity:1;transform:none;animation:none;}}
 </style>
 </head>
 <body>
@@ -158,7 +166,7 @@
 <!-- HERO -->
 <div class="hero">
   <div class="wrap">
-    <span class="eyebrow"><span class="dot"></span> Actuarial Analyst · PVI Digital</span>
+    <span class="eyebrow"><span class="dot"></span> Data Analyst · PVI Digital</span>
     <h1>Turning insurance data into<br><span class="grad">decisions you can act on.</span></h1>
     <p class="lead">I build interactive BI dashboards and automated data pipelines, blending an actuarial background with modern data engineering on Power BI, Microsoft Fabric and PySpark.</p>
     <div class="cta">
@@ -180,13 +188,13 @@
     <h2 class="sectitle reveal">A data person with an actuary's eye for the numbers.</h2>
     <div class="about-grid">
       <div class="about reveal">
-        <p>I'm Nam, an Actuarial Analyst at <b>PVI Digital</b>. My work sits where insurance domain knowledge meets data: I take raw policy, premium and claims data and turn it into dashboards and pipelines that the business actually uses to price and steer the book.</p>
+        <p>I'm Nam, a Data Analyst at <b>PVI Digital</b>. My work sits where insurance domain knowledge meets data: I take raw policy, premium and claims data and turn it into dashboards and pipelines that the business actually uses to price and steer the book.</p>
         <p>Day to day that means designing Power BI reports, automating refreshes from SQL Server into Microsoft Fabric, and writing PySpark to crunch daily actuarial metrics, loss ratios, renewal rates, exposure and combined ratios, at scale.</p>
         <p>I care about clarity: a dashboard should answer the question in one glance, and a pipeline should be reliable enough that nobody thinks about it.</p>
       </div>
       <div class="factcard reveal">
         <h3>At a glance</h3>
-        <div class="factrow"><span class="ic">◆</span> Actuarial Analyst, PVI Digital</div>
+        <div class="factrow"><span class="ic">◆</span> Data Analyst, PVI Digital</div>
         <div class="factrow"><span class="ic">▤</span> BI · Data Engineering · Analytics</div>
         <div class="factrow"><span class="ic">⌁</span> Power BI · Fabric · PySpark · SQL</div>
         <div class="factrow"><span class="ic">⊕</span> Non-life insurance domain</div>
@@ -250,7 +258,7 @@
       </a>
       <div class="body">
         <span class="tag">Side project · Full-stack AI · Next.js</span>
-        <h3>Penguin — Local-first multi-agent AI workspace</h3>
+        <h3>Penguin: a local-first multi-agent AI workspace</h3>
         <ul>
           <li>Built a desktop app where a team of configurable AI agents plan, hand off work, and produce real files, not just chat.</li>
           <li>Agents export Word, Excel (with live formulas), PDF and native editable PowerPoint, plus interactive HTML dashboards.</li>
@@ -271,7 +279,7 @@
       </a>
       <div class="body">
         <span class="tag">ETL · Microsoft Fabric · PySpark</span>
-        <h3>Motor Actuarial Dashboard — Daily ETL with MS Fabric</h3>
+        <h3>Motor Actuarial Dashboard, daily ETL with MS Fabric</h3>
         <ul>
           <li>Automated a daily pipeline from SQL Server into Microsoft Fabric using Dataflow Gen2 and Data Pipeline.</li>
           <li>Ran daily actuarial calculations in PySpark (loss ratio, combined ratio, profit/loss).</li>
@@ -317,9 +325,12 @@
     <h2 class="sectitle reveal">Let's talk data.</h2>
     <p class="secintro reveal">Open to conversations about BI, data engineering and insurance analytics.</p>
     <div class="cta reveal">
-      <a class="btn primary" href="mailto:dovannama5qtk48@gmail.com">✉ Email me</a>
-      <a class="btn ghost" style="border-color:var(--line);color:var(--ink);" href="https://www.linkedin.com/in/nam-do-366926351/" target="_blank" rel="noopener">in LinkedIn</a>
+      <a class="btn primary" href="mailto:dovannama5qtk48@gmail.com">Email me</a>
+      <a class="btn ghost" style="border-color:var(--line);color:var(--ink);" href="https://www.linkedin.com/in/nam-do-366926351/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
+    <p class="reveal" style="margin-top:18px;color:var(--muted);font-size:15px;">
+      or write to <a href="mailto:dovannama5qtk48@gmail.com" style="color:var(--accent-2);font-weight:600;">dovannama5qtk48@gmail.com</a>
+    </p>
   </div>
 </section>
 
@@ -335,8 +346,8 @@
   const hdr=document.querySelector('header');
   addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>8));
   // reveal on scroll
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12,rootMargin:'0px 0px -7% 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
