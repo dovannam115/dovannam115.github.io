@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nam Do — Data, BI &amp; Actuarial Analytics</title>
+<meta name="description" content="Nam Do — Actuarial Analyst at PVI Digital. Business Intelligence, Data Engineering and Analytics: Power BI, Microsoft Fabric, PySpark, SQL.">
+<meta property="og:title" content="Nam Do — Data, BI &amp; Actuarial Analytics">
+<meta property="og:description" content="Actuarial Analyst building BI dashboards and data pipelines with Power BI, Microsoft Fabric and PySpark.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1b2d'/%3E%3Cpath d='M18 44V20h5l11 15V20h5v24h-5L23 29v15z' fill='%230bb4c9'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f1b2d; --ink-2:#1b2c44; --muted:#5b6b82; --line:#e6ecf3;
+    --bg:#ffffff; --bg-soft:#f4f8fc; --card:#ffffff;
+    --accent:#0bb4c9; --accent-2:#0e7490; --accent-soft:#e6f7fa;
+    --radius:16px; --maxw:1080px;
+    --shadow:0 18px 50px -22px rgba(15,27,45,.32);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65;
+    -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;line-height:1.15;margin:0;letter-spacing:-.01em;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  .accent{color:var(--accent-2);}
+
+  /* ---------- nav ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);
+    backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid transparent;transition:border-color .3s;}
+  header.scrolled{border-color:var(--line);}
+  nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk";font-weight:700;font-size:17px;}
+  .brand .mark{width:30px;height:30px;border-radius:9px;background:var(--ink);color:var(--accent);
+    display:grid;place-items:center;font-size:16px;}
+  .navlinks{display:flex;gap:28px;font-size:14.5px;font-weight:500;color:var(--muted);}
+  .navlinks a{position:relative;transition:color .2s;}
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:-5px;height:2px;width:0;background:var(--accent);transition:width .25s;}
+  .navlinks a:hover::after{width:100%;}
+  @media(max-width:680px){.navlinks{display:none;}}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;color:#eaf3fb;
+    background:radial-gradient(120% 130% at 85% -10%, #1c3d52 0%, transparent 60%),
+               linear-gradient(160deg,#0f1b2d 0%,#13243b 55%,#0e2a3a 100%);}
+  .hero::before{content:"";position:absolute;inset:0;opacity:.5;
+    background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:46px 46px;mask-image:radial-gradient(80% 70% at 70% 0%,#000,transparent 75%);}
+  .hero::after{content:"";position:absolute;width:520px;height:520px;right:-120px;top:-160px;border-radius:50%;
+    background:radial-gradient(circle,rgba(11,180,201,.45),transparent 62%);filter:blur(20px);}
+  .hero .wrap{position:relative;padding:96px 24px 104px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.04em;
+    color:#9fdfe9;background:rgba(11,180,201,.12);border:1px solid rgba(11,180,201,.3);
+    padding:6px 14px;border-radius:999px;text-transform:uppercase;}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#2fe0c4;box-shadow:0 0 0 4px rgba(47,224,196,.18);}
+  .hero h1{font-size:clamp(38px,6vw,66px);font-weight:700;margin:22px 0 0;color:#fff;}
+  .hero h1 .grad{background:linear-gradient(100deg,#5fe6f2,#28b6cf 55%,#7fe0c8);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero .lead{max-width:620px;margin:20px 0 0;font-size:18px;color:#b9cbdc;}
+  .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;
+    padding:13px 22px;border-radius:12px;transition:transform .15s,box-shadow .2s,background .2s;}
+  .btn.primary{background:var(--accent);color:#04222a;box-shadow:0 12px 30px -10px rgba(11,180,201,.7);}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px -10px rgba(11,180,201,.8);}
+  .btn.ghost{border:1px solid rgba(255,255,255,.22);color:#eaf3fb;}
+  .btn.ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-2px);}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:26px;margin-top:46px;color:#8ea4bb;font-size:14px;}
+  .hero-meta b{color:#eaf3fb;font-weight:600;}
+
+  /* ---------- sections ---------- */
+  section{padding:88px 0;}
+  .seclabel{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);}
+  .sectitle{font-size:clamp(27px,4vw,38px);font-weight:700;margin:12px 0 0;}
+  .secintro{color:var(--muted);max-width:640px;margin:16px 0 0;font-size:17px;}
+  .soft{background:var(--bg-soft);}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;margin-top:40px;align-items:start;}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:32px;}}
+  .about p{color:var(--ink-2);font-size:17px;margin:0 0 16px;}
+  .factcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);}
+  .factcard h3{font-size:15px;margin-bottom:14px;}
+  .factrow{display:flex;align-items:center;gap:12px;padding:9px 0;font-size:15px;color:var(--ink-2);border-top:1px solid var(--line);}
+  .factrow:first-of-type{border-top:0;}
+  .factrow .ic{width:30px;height:30px;border-radius:8px;background:var(--accent-soft);color:var(--accent-2);
+    display:grid;place-items:center;flex:none;}
+
+  /* skills */
+  .skillgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:42px;}
+  @media(max-width:820px){.skillgrid{grid-template-columns:1fr;}}
+  .skillcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px;
+    transition:transform .18s,box-shadow .18s,border-color .18s;}
+  .skillcard:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#cfe6ec;}
+  .skillcard h3{font-size:16px;display:flex;align-items:center;gap:10px;}
+  .skillcard h3 .ic{font-size:18px;}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px;}
+  .chip{font-size:13.5px;font-weight:500;color:var(--ink-2);background:var(--bg-soft);
+    border:1px solid var(--line);padding:6px 12px;border-radius:8px;}
+
+  /* projects */
+  .project{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+    margin-top:34px;box-shadow:var(--shadow);}
+  .project .shot{display:block;border-bottom:1px solid var(--line);background:#0f1b2d;}
+  .project .shot img{width:100%;display:block;transition:transform .5s ease;}
+  .project .shot:hover img{transform:scale(1.015);}
+  .project .body{padding:30px 32px 34px;}
+  .project .tag{font-size:12.5px;font-weight:600;color:var(--accent-2);letter-spacing:.04em;text-transform:uppercase;}
+  .project h3{font-size:23px;margin:8px 0 0;}
+  .project ul{margin:16px 0 0;padding-left:0;list-style:none;}
+  .project li{position:relative;padding:5px 0 5px 26px;color:var(--ink-2);font-size:15.5px;}
+  .project li::before{content:"";position:absolute;left:2px;top:13px;width:8px;height:8px;border-radius:2px;
+    background:var(--accent);transform:rotate(45deg);}
+  .project .foot{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:22px;}
+  .project .foot .chip{background:var(--accent-soft);border-color:#cdebf0;color:var(--accent-2);}
+  .repo-link{margin-left:auto;display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--accent-2);font-size:15px;}
+  .repo-link:hover{text-decoration:underline;}
+  .note{margin-top:18px;font-size:13.5px;color:var(--muted);font-style:italic;
+    border-left:3px solid var(--line);padding:4px 0 4px 14px;}
+
+  /* contact */
+  .contact{text-align:center;}
+  .contact .sectitle{margin-top:12px;}
+  .contact .secintro{margin:16px auto 0;}
+  .contact .cta{justify-content:center;margin-top:30px;}
+
+  footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top"><span class="mark">N</span> Nam Do</a>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span> Actuarial Analyst · PVI Digital</span>
+    <h1>Turning insurance data into<br><span class="grad">decisions you can act on.</span></h1>
+    <p class="lead">I build interactive BI dashboards and automated data pipelines, blending an actuarial background with modern data engineering on Power BI, Microsoft Fabric and PySpark.</p>
+    <div class="cta">
+      <a class="btn primary" href="#projects">View projects →</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/nam-do-366926351/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="hero-meta">
+      <span><b>Focus</b> · Business Intelligence</span>
+      <span><b>+</b> Data Engineering</span>
+      <span><b>+</b> Actuarial Analytics</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <p class="seclabel reveal">About</p>
+    <h2 class="sectitle reveal">A data person with an actuary's eye for the numbers.</h2>
+    <div class="about-grid">
+      <div class="about reveal">
+        <p>I'm Nam, an Actuarial Analyst at <b>PVI Digital</b>. My work sits where insurance domain knowledge meets data: I take raw policy, premium and claims data and turn it into dashboards and pipelines that the business actually uses to price and steer the book.</p>
+        <p>Day to day that means designing Power BI reports, automating refreshes from SQL Server into Microsoft Fabric, and writing PySpark to crunch daily actuarial metrics, loss ratios, renewal rates, exposure and combined ratios, at scale.</p>
+        <p>I care about clarity: a dashboard should answer the question in one glance, and a pipeline should be reliable enough that nobody thinks about it.</p>
+      </div>
+      <div class="factcard reveal">
+        <h3>At a glance</h3>
+        <div class="factrow"><span class="ic">◆</span> Actuarial Analyst, PVI Digital</div>
+        <div class="factrow"><span class="ic">▤</span> BI · Data Engineering · Analytics</div>
+        <div class="factrow"><span class="ic">⌁</span> Power BI · Fabric · PySpark · SQL</div>
+        <div class="factrow"><span class="ic">⊕</span> Non-life insurance domain</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="soft">
+  <div class="wrap">
+    <p class="seclabel reveal">Skills</p>
+    <h2 class="sectitle reveal">The toolkit I work with.</h2>
+    <p class="secintro reveal">From raw source tables to a polished, decision-ready report, end to end.</p>
+    <div class="skillgrid">
+      <div class="skillcard reveal">
+        <h3><span class="ic">📊</span> BI &amp; Visualization</h3>
+        <div class="chips">
+          <span class="chip">Power BI</span><span class="chip">DAX</span>
+          <span class="chip">Dashboard design</span><span class="chip">Drill-down &amp; tooltips</span>
+          <span class="chip">Conditional formatting</span>
+        </div>
+      </div>
+      <div class="skillcard reveal">
+        <h3><span class="ic">⚙️</span> Data Engineering</h3>
+        <div class="chips">
+          <span class="chip">Microsoft Fabric</span><span class="chip">PySpark</span>
+          <span class="chip">Lakehouse</span><span class="chip">Dataflow Gen2</span>
+          <span class="chip">Data Pipeline</span><span class="chip">SQL Server</span><span class="chip">ETL</span>
+        </div>
+      </div>
+      <div class="skillcard reveal">
+        <h3><span class="ic">💻</span> Programming</h3>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">pandas</span><span class="chip">NumPy</span>
+          <span class="chip">SQL</span><span class="chip">Streamlit</span>
+        </div>
+      </div>
+      <div class="skillcard reveal">
+        <h3><span class="ic">🏦</span> Domain</h3>
+        <div class="chips">
+          <span class="chip">Actuarial analysis</span><span class="chip">Non-life insurance</span>
+          <span class="chip">Pricing KPIs</span><span class="chip">Loss &amp; renewal ratios</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <p class="seclabel reveal">Projects</p>
+    <h2 class="sectitle reveal">Selected work.</h2>
+    <p class="secintro reveal">A self-built AI product alongside insurance data work. Dashboard figures are simulated to protect confidentiality.</p>
+
+    <!-- Project: Penguin -->
+    <article class="project reveal">
+      <a class="shot" href="https://github.com/dovannam115/penguin-releases" target="_blank" rel="noopener">
+        <img src="images/penguin.png" alt="Penguin multi-agent AI workspace">
+      </a>
+      <div class="body">
+        <span class="tag">Side project · Full-stack AI · Next.js</span>
+        <h3>Penguin — Local-first multi-agent AI workspace</h3>
+        <ul>
+          <li>Built a desktop app where a team of configurable AI agents plan, hand off work, and produce real files, not just chat.</li>
+          <li>Agents export Word, Excel (with live formulas), PDF and native editable PowerPoint, plus interactive HTML dashboards.</li>
+          <li>Designed an installable <b>skills</b> system: capability packs injected into an agent's prompt at runtime.</li>
+          <li>Engineered a warm session pool and an embedded Python render pipeline for fast, fully offline generation.</li>
+        </ul>
+        <div class="foot">
+          <span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">Multi-agent</span><span class="chip">SQLite</span><span class="chip">Python</span>
+          <a class="repo-link" href="https://github.com/dovannam115/penguin-releases" target="_blank" rel="noopener">View repository ↗</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Project 1 -->
+    <article class="project reveal">
+      <a class="shot" href="https://github.com/dovannam115/ETL_Motor_Project/tree/main" target="_blank" rel="noopener">
+        <img src="images/overall.png" alt="Motor actuarial dashboard overview">
+      </a>
+      <div class="body">
+        <span class="tag">ETL · Microsoft Fabric · PySpark</span>
+        <h3>Motor Actuarial Dashboard — Daily ETL with MS Fabric</h3>
+        <ul>
+          <li>Automated a daily pipeline from SQL Server into Microsoft Fabric using Dataflow Gen2 and Data Pipeline.</li>
+          <li>Ran daily actuarial calculations in PySpark (loss ratio, combined ratio, profit/loss).</li>
+          <li>Managed storage and governance through a Fabric Lakehouse.</li>
+          <li>Built interactive dashboards to track pricing KPIs across coverage and channel.</li>
+        </ul>
+        <div class="foot">
+          <span class="chip">Microsoft Fabric</span><span class="chip">PySpark</span><span class="chip">Lakehouse</span><span class="chip">Power BI</span>
+          <a class="repo-link" href="https://github.com/dovannam115/ETL_Motor_Project/tree/main" target="_blank" rel="noopener">View repository ↗</a>
+        </div>
+        <p class="note">The data shown is simulated and does not represent the company's actual data, to maintain confidentiality and comply with data-protection policies.</p>
+      </div>
+    </article>
+
+    <!-- Project 2 -->
+    <article class="project reveal">
+      <a class="shot" href="images/Dashboard_RenewalRate.png" target="_blank" rel="noopener">
+        <img src="images/Dashboard_RenewalRate.png" alt="Renewal performance dashboard">
+      </a>
+      <div class="body">
+        <span class="tag">Power BI · Analytics</span>
+        <h3>Renewal Performance Dashboard</h3>
+        <ul>
+          <li>Designed an interactive dashboard to monitor renewal performance across business units, periods and loss-ratio groups.</li>
+          <li>Visualized overall renewal rate, top units by exposure, cohort renewal and performance scatter plots.</li>
+          <li>Used advanced Power BI features: drill-down, conditional formatting and custom tooltips.</li>
+          <li>Sourced from SQL Server with scheduled refresh for up-to-date reporting.</li>
+        </ul>
+        <div class="foot">
+          <span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">SQL Server</span>
+          <a class="repo-link" href="https://www.linkedin.com/in/nam-do-366926351/" target="_blank" rel="noopener">More on LinkedIn ↗</a>
+        </div>
+        <p class="note">The data shown is simulated and does not represent the company's actual data, to maintain confidentiality and comply with data-protection policies.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="soft contact">
+  <div class="wrap">
+    <p class="seclabel reveal">Contact</p>
+    <h2 class="sectitle reveal">Let's talk data.</h2>
+    <p class="secintro reveal">Open to conversations about BI, data engineering and insurance analytics.</p>
+    <div class="cta reveal">
+      <a class="btn primary" href="mailto:dovannama5qtk48@gmail.com">✉ Email me</a>
+      <a class="btn ghost" style="border-color:var(--line);color:var(--ink);" href="https://www.linkedin.com/in/nam-do-366926351/" target="_blank" rel="noopener">in LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;width:100%;">
+    <span>© <span id="yr">2026</span> Nam Do</span>
+    <span>Built with plain HTML &amp; CSS · hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+<script>
+  // sticky nav border on scroll
+  const hdr=document.querySelector('header');
+  addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>8));
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
+</script>
+</body>
+</html>
